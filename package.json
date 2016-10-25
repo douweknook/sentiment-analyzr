@@ -1,0 +1,15 @@
+{
+  "name": "sentiment-classifier-app",
+  "version": "0.0.0",
+  "description": "An app that uses bayesian machine learning to classify (short) sentences as positive or negative",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douwe Knook",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
+  }
+}
