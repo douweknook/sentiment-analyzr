@@ -41,6 +41,6 @@ html
 			let input = {	text:	$('#query-sentence').val() }
 			$.post('/classify', input, (data)=> {
 				$('#output').empty()
-				$('#output').append('<div class="card teal darken-2"><div class="card-content white-text"><span class="card-title">'+data.sentiment+'</span><p>You sentence "'+data.text+'" was classified as '+data.sentiment+'</p></div></div>')
+				$('#output').append('<div class="card teal darken-2"><div class="card-content white-text"><span class="card-title">'+data.sentiment+'</span><p>You sentence "'+data.text+'" was classified as '+data.sentiment+'</p></div><div class="card-action"><a href="/add" class="lime-text text-lighten-5">Was your sentence classified wrong? Please add the correct classification.</a></div></div>')
 			})
 		})

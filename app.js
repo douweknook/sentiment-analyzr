@@ -1,6 +1,8 @@
 const fs 			= require('fs')
 const express		= require('express')
 const bodyParser 	= require('body-parser')
+const Twitter 		= require('twitter-node-client').Twitter
+
 const classifier	= require(__dirname+'/modules/classifier')
 
 const app = express()
@@ -15,8 +17,15 @@ app.get('/', (req, res) => {
 	res.render('index')
 })
 
+app.get('/add', (req, res) => {
+	res.render('add')
+})
+
+app.get('/twitter', (req, res) => {
+	res.render('twitter')
+})
+
 app.post('/send-data', bodyParser.urlencoded({extended: true}), (req, res) => {
-	console.log(req.body)
 	fs.readFile(dataFile, (err, data) => {
 		if (err) throw err
 		data = JSON.parse(data)
@@ -28,10 +37,6 @@ app.post('/send-data', bodyParser.urlencoded({extended: true}), (req, res) => {
 			res.send("Input added to database, classifier updated.")
 		})
 	})
-})
-
-app.get('/add', (req, res) => {
-	res.render('add')
 })
 
 app.post('/classify', bodyParser.urlencoded({extended: true}), (req, res) => {

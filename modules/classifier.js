@@ -1,6 +1,7 @@
 const fs		= require('fs')
 const bayes 	= require('bayes')
 const stemmer 	= require('porter-stemmer').stemmer
+const sw		= require('stopword')
 
 const dataFile			= __dirname+'/../data/data.json'
 const classifierFile 	= __dirname+'/../data/classifier.json'
@@ -19,7 +20,7 @@ function trainBaseClassifier() {
 		if (err) throw err
 		data = JSON.parse(data)
 		data.forEach( (item) => {
-			classifier.learn(stem(item.text), item.sentiment)
+			classifier.learn(preprocess(item.text), item.sentiment)
 		})
 		fs.writeFile(classifierFile, classifier.toJson(), (err => {
 			if (err) throw err
@@ -31,7 +32,7 @@ function trainBaseClassifier() {
 function addToClassifier(item) {
 	fs.readFile(classifierFile, 'utf8', (err, data) => {
 		let classifier = bayes.fromJson(data)
-		classifier.learn(stem(item.text), item.sentiment)
+		classifier.learn(preprocess(item.text), item.sentiment)
 		fs.writeFile(classifierFile, classifier.toJson(), (err) => {
 			if (err) throw err
 		})
@@ -41,7 +42,7 @@ function addToClassifier(item) {
 function classifyText(text, callback) {
 	fs.readFile(classifierFile, (err, data) => {
 		let classifier = bayes.fromJson(data)
-		let sentiment = classifier.categorize(stem(text))
+		let sentiment = classifier.categorize(preprocess(text))
 		let output = {
 			text: 		text,
 			sentiment: 	sentiment
@@ -50,8 +51,8 @@ function classifyText(text, callback) {
 	})
 }
 
-function stem(string) {
-	return string.split(' ')
+function preprocess(string) {
+	return sw.removeStopwords(string.split(' '))
 		.map( (item) => { return stemmer(item) })
-		.join(' ') 
+		.join(' ')
 }
