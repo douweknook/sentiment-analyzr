@@ -24,23 +24,35 @@ html
 				//- form(class="col s12")
 				div(class="row")
 					div(class="input-field col s12" method="post")
-						input(type="text" placeholder="Enter your sentence here..." class="validate" id="query-sentence")
+						input(type="text" placeholder="Enter your sentence here..." class="validate" id="input-sentence")
+				div(class="row")
+					div(class="input-field col s3")
+						input(type="radio" name="sentiment" id="positive" value="positive")
+						label(for="positive") Positive sentiment
+					div(class="input-field col s3")
+						input(type="radio" name="sentiment" id="neutral" value="neutral")
+						label(for="neutral") Neutral sentiment
+					div(class="input-field col s3")
+						input(type="radio" name="sentiment" id="negative" value="negative")
+						label(for="negative") Negative sentiment
 				div(class="row")
 					div(class="input-field col s12")
-						button(class="btn waves-effect waves-light" id="classify-button") Classify
+						button(class="btn waves-effect waves-light" id="submit-button") Submit
 							i(class="material-icons right") send
-
-		div(class="container")
-			div(class="row col s12", id="output")
 
 	script(src="js/jquery.min.js")
 	script(src="js/materialize.min.js")
 	script.
-		$('#classify-button').on('click', () => {
+		$('#submit-button').on('click', () => {
 			// Create object structure out of input
-			let input = {	text:	$('#query-sentence').val() }
-			$.post('/classify', input, (data)=> {
-				$('#output').empty()
-				$('#output').append('<div class="card teal darken-2"><div class="card-content white-text"><span class="card-title">'+data.sentiment+'</span><p>You sentence "'+data.text+'" was classified as '+data.sentiment+'</p></div></div>')
+			let input = {	text:		$('#input-sentence').val(),
+							sentiment: 	$('input:radio[name=sentiment]:checked').val()
+						}
+			$.post('/send-data', input, (data)=> {
+				// Show message to user that data has been added
+				Materialize.toast(data, 3000, 'rounded')
+				// Reset form
+				$('#input-sentence').val("")
+				$('input[type="radio"]').prop('checked', false)
 			})
 		})

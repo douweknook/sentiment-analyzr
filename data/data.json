@@ -1,0 +1,106 @@
+[
+  {
+    "text": "This is awesome",
+    "sentiment": "positive"
+  },
+  {
+    "text": "This is terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "fantastic",
+    "sentiment": "positive"
+  },
+  {
+    "text": "fantastic",
+    "sentiment": "positive"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "terrible sorry",
+    "sentiment": "negative"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "aweful",
+    "sentiment": "negative"
+  },
+  {
+    "text": "bad",
+    "sentiment": "negative"
+  },
+  {
+    "text": "bad worse worst",
+    "sentiment": "negative"
+  },
+  {
+    "text": "fantastic",
+    "sentiment": "positive"
+  },
+  {
+    "text": "awesome",
+    "sentiment": "positive"
+  },
+  {
+    "text": "amazing",
+    "sentiment": "positive"
+  },
+  {
+    "text": "great",
+    "sentiment": "positive"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "this is terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "it is awefull",
+    "sentiment": "negative"
+  },
+  {
+    "text": "this sucks",
+    "sentiment": "negative"
+  },
+  {
+    "text": "dispicable",
+    "sentiment": "negative"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "awesome",
+    "sentiment": "positive"
+  },
+  {
+    "text": "terrible",
+    "sentiment": "negative"
+  },
+  {
+    "text": "hello world",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "hello world",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "hello world",
+    "sentiment": "neutral"
+  }
+]

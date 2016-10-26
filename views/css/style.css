@@ -1,0 +1,10 @@
+.container-padding {
+	padding-top: 25px;
+}
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 45%;
+  left: 15%;
+}
