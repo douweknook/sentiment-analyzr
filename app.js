@@ -1,9 +1,9 @@
 const fs 			= require('fs')
 const express		= require('express')
 const bodyParser 	= require('body-parser')
-const Twitter 		= require('twitter-node-client').Twitter
 
 const classifier	= require(__dirname+'/modules/classifier')
+const twitter 		= require(__dirname+'/modules/twitter')
 
 const app = express()
 const dataFile = __dirname+'/data/data.json'
@@ -22,7 +22,8 @@ app.get('/add', (req, res) => {
 })
 
 app.get('/twitter', (req, res) => {
-	res.render('twitter')
+	let tweets = twitter.search("#haiku", 1)
+	res.render('twitter', tweets)
 })
 
 app.post('/send-data', bodyParser.urlencoded({extended: true}), (req, res) => {
