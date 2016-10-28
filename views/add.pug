@@ -44,15 +44,22 @@ html
 	script(src="js/materialize.min.js")
 	script.
 		$('#submit-button').on('click', () => {
-			// Create object structure out of input
-			let input = {	text:		$('#input-sentence').val(),
-							sentiment: 	$('input:radio[name=sentiment]:checked').val()
-						}
-			$.post('/send-data', input, (data)=> {
-				// Show message to user that data has been added
-				Materialize.toast(data, 3000, 'rounded')
-				// Reset form
-				$('#input-sentence').val("")
-				$('input[type="radio"]').prop('checked', false)
-			})
-		})
+			if ( $('#input-sentence').val() && $('input:radio[name=sentiment]:checked').val() ) {
+				let array = []
+				// Create object structure out of input
+				array.push( {	
+					text:		$('#input-sentence').val(),
+					sentiment: 	$('input:radio[name=sentiment]:checked').val()
+				} )
+				console.log(array)
+				$.post('/send-data', {input: array}, (data)=> {
+					// Show message to user that data has been added
+					Materialize.toast(data, 3000, 'rounded')
+					// Reset form
+					$('#input-sentence').val("")
+					$('input[type="radio"]').prop('checked', false)
+				})
+			} else {
+				Materialize.toast('Please fill in the both a sentence and the sentiment!', 3000, 'rounded')
+			}
+		}) 

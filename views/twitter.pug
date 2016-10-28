@@ -19,8 +19,86 @@ html
 						li: a(href="/add") Add
 						li: a(href="/twitter") Twitter
 
-		div(class="container container-padding")
+		div(class="container container-padding teal-text text-darken-2")
+			h4 The sentences below are automatically collected from Twitter. Please tell us which sentiment they convey so we can improve on our classification model.
+
+		div(class="container container-padding", id="tweet-container")
+			-var i = 0
+			each tweet in tweets
+				div(class="row")
+					div(class="col s12")
+						div(class="card")
+							//- span(class="card-title") Title
+							div(class="card-content")
+								h5(id="tweet"+i) #{tweet.text}
+								p Tweeted by #{tweet.username} (@#{tweet.handle})
+							div(class="card-action")
+								input(type="radio" name="group"+i id="positive"+i value="positive")
+								label(for="positive"+i, class="sentiment-radio") Positive sentiment
+								input(type="radio" name="group"+i id="neutral"+i value="neutral")
+								label(for="neutral"+i, class="sentiment-radio") Neutral sentiment
+								input(type="radio" name="group"+i id="negative"+i value="negative")
+								label(for="negative"+i, class="sentiment-radio") Negative sentiment
+								-i++
+		
+		div(class="container container-pad-bottom")
 			div(class="row")
+				div(class="input-field col s12")
+					button(class="btn-large waves-effect waves-light btn-wide" id="twitter-submit-button") Submit
+						i(class="material-icons right") send
+
+		footer(class="page-footer")
+          div(class="container")
+            div(class="row")
+              div(class="col l6 s12")
+                h5(class="white-text") Footer Content
+                p(class="grey-text text-lighten-4") You can use rows and columns here to organize your footer content.
+              div(class="col l4 offset-l2 s12")
+                h5(class="white-text") Links
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
 
 	script(src="js/jquery.min.js")
 	script(src="js/materialize.min.js")
+	script.
+		let amount = parseInt('#{amount}')
+		$('#twitter-submit-button').on('click', () => {
+			let dataArray = []
+			let loopDone = false
+			for (let i = 0; i < amount; i++) {
+				if ( $("#tweet"+i).html() && $("input:radio[name='group"+i+"']:checked").val() ) {
+					dataArray.push( { 
+						text: 		$("#tweet"+i).html(),
+						sentiment: 	$("input:radio[name='group"+i+"']:checked").val()
+					} )
+					if (i == amount-1) {
+						loopDone = true
+					}
+				} else {
+					Materialize.toast('Please fill in the sentiment for all '+amount+' tweets!', 3000, 'rounded')
+					break
+				}
+			}
+			if (loopDone)
+				$.post('/send-data', {input: dataArray}, (data)=> {
+					// Show message to user that data has been added
+					Materialize.toast(data, 3000, 'rounded')
+					// Load new set of tweets
+					location.reload();
+				})
+		})

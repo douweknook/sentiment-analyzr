@@ -1,18 +1,6 @@
 [
   {
-    "text": "This is awesome",
-    "sentiment": "positive"
-  },
-  {
-    "text": "This is terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "fantastic",
-    "sentiment": "positive"
-  },
-  {
-    "text": "fantastic",
+    "text": "amazing",
     "sentiment": "positive"
   },
   {
@@ -20,12 +8,12 @@
     "sentiment": "negative"
   },
   {
-    "text": "terrible sorry",
-    "sentiment": "negative"
+    "text": "awesome",
+    "sentiment": "positive"
   },
   {
-    "text": "terrible",
-    "sentiment": "negative"
+    "text": "great",
+    "sentiment": "positive"
   },
   {
     "text": "aweful",
@@ -36,11 +24,55 @@
     "sentiment": "negative"
   },
   {
-    "text": "bad worse worst",
+    "text": "RT @BTS_France: [MPD CAM] 161027 | BTS - 21st Century Girls (J-Hope focus) @ M!Countdown in Jeju : https://t.co/t2jfsdDA9T",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "I liked a @YouTube video from @20thcenturyfox https://t.co/PQgjOE0hcG Logan | Official Trailer [HD] | 20th Century FOX",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "[MPD CAM] 161027 | BTS - 21st Century Girls (Jimin focus) @ M!Countdown in Jeju : https://t.co/IMWJKrOKZN",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "RT @BTS_France: [MPD CAM] 161027 | BTS - 21st Century Girls (V focus) @ M!Countdown in Jeju : https://t.co/lpYlxRfJXz",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "Stay on the pulse of innovation with an iPhone 7, Apple Watch, Amazon Echo, &amp;amp; more — tools for a 21st-century career https://t.co/SaQYQ7vJht",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "RT @magnifier661: 🔥🚨WTF Did I Just Watch?🚨🔥\n@RealAlexJones and @infowars releases very scary new ad, painting a serious picture of a Hillar…",
     "sentiment": "negative"
   },
   {
-    "text": "fantastic",
+    "text": "Imagine if I used emojis being serious",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "@abcnews are you fucking serious #DefundTheABC",
+    "sentiment": "negative"
+  },
+  {
+    "text": "RT @e_casalicchio: PolHome exclusive... LISTEN: Ukip leadership hopeful Raheem Kassam said 'serious case' for Muslim migration ban - https:…",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "RT @FactsOfSchool: \"Can u be serious for a second\" \n\nMe: https://t.co/O9V7fNJqgA",
+    "sentiment": "neutral"
+  },
+  {
+    "text": "hahahaha",
+    "sentiment": "positive"
+  },
+  {
+    "text": "happy",
+    "sentiment": "positive"
+  },
+  {
+    "text": "happiness",
     "sentiment": "positive"
   },
   {
@@ -49,62 +81,6 @@
   },
   {
     "text": "amazing",
-    "sentiment": "positive"
-  },
-  {
-    "text": "great",
-    "sentiment": "positive"
-  },
-  {
-    "text": "terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "this is terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "it is awefull",
-    "sentiment": "negative"
-  },
-  {
-    "text": "this sucks",
-    "sentiment": "negative"
-  },
-  {
-    "text": "dispicable",
-    "sentiment": "negative"
-  },
-  {
-    "text": "terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "awesome",
-    "sentiment": "positive"
-  },
-  {
-    "text": "terrible",
-    "sentiment": "negative"
-  },
-  {
-    "text": "hello world",
-    "sentiment": "neutral"
-  },
-  {
-    "text": "hello world",
-    "sentiment": "neutral"
-  },
-  {
-    "text": "hello world",
-    "sentiment": "neutral"
-  },
-  {
-    "text": "happiness",
     "sentiment": "positive"
   }
 ]

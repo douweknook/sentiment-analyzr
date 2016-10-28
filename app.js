@@ -22,20 +22,35 @@ app.get('/add', (req, res) => {
 })
 
 app.get('/twitter', (req, res) => {
-	let tweets = twitter.search("#haiku", 1)
-	res.render('twitter', tweets)
+	let amount = 5
+	twitter.search( amount, 
+		(err) => { console.log(err) }, 
+		(data)=> {
+			data = JSON.parse(data)
+			let tweets = data.statuses.map( (x) => {
+				return {
+					handle: 	x.user.screen_name, 
+					username: 	x.user.name, 
+					tweet_id: 	x.id, 
+					text: 		x.text 
+				}
+			})
+			res.render('twitter', {tweets: tweets, amount: amount})
+	} )
 })
 
 app.post('/send-data', bodyParser.urlencoded({extended: true}), (req, res) => {
+	for (let z = req.body.input.length - 1; z >= 0; z--) {
+		classifier.add(req.body.input[z])
+	}
 	fs.readFile(dataFile, (err, data) => {
 		if (err) throw err
 		data = JSON.parse(data)
-		data.push(req.body)
+		data = data.concat(req.body.input)
 		fs.writeFile(dataFile, JSON.stringify(data, null, 2), (err) => {
 			if (err) throw err
-			// send some response message back!
-			classifier.add(req.body)
-			res.send("Input added to database, classifier updated.")
+			// send a response message back on last iteration!
+			res.send("Input added to database, classifier updated. Thank you.")
 		})
 	})
 })
@@ -47,7 +62,7 @@ app.post('/classify', bodyParser.urlencoded({extended: true}), (req, res) => {
 })
 
 app.listen(8000, ()=>{
-	classifier.train()
+	classifier.train(true)
 	console.log('Server running...')
 })
 

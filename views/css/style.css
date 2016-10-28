@@ -2,9 +2,23 @@
 	padding-top: 25px;
 }
 
-#toast-container {
+.container-pad-bottom {
+	padding-bottom: 50px;
+	text-align: center;
+}
+
+/*#toast-container {
   top: auto !important;
   right: auto !important;
   bottom: 45%;
   left: 15%;
+}*/
+
+.sentiment-radio {
+	padding-right: 35px;
 }
+
+.btn-wide {
+	width: 50%;
+}
+
